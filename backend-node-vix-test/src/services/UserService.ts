@@ -8,7 +8,7 @@ import { AppError } from "../errors/AppError";
 import { ERROR_MESSAGE } from "../constants/erroMessages";
 import { STATUS_CODE } from "../constants/statusCode";
 import bcrypt from "bcryptjs";
-import { TUserUpdated } from "../types/validations/User/updateUser";
+import { TUserUpdated, userUpdatedSchema } from "../types/validations/User/updateUser";
 import { TLoginSchema } from "../types/validations/Auth/loginSchema";
 import { genToken } from "../utils/jwt";
 
@@ -65,8 +65,8 @@ export class UserService {
     if (!user) {
       return null;
     }
-
-    return user;
+    const { password, ...userWithoutPassword } = user;
+    return userWithoutPassword;
   }
 
   async getById(idUser: string) {
@@ -112,12 +112,13 @@ export class UserService {
   }
 
   async updateUser(data: TUserUpdated, idUser: string) {
+    const validateDataSchema = userUpdatedSchema.parse(data);
     const userToUpdate = await this.userModel.getById(idUser);
     if (!userToUpdate) {
       throw new AppError(ERROR_MESSAGE.USER_NOT_FOUND, STATUS_CODE.NOT_FOUND);
     }
 
-    const { currentPassword, newPassword, ...restOfData } = data;
+    const { currentPassword, newPassword, ...restOfData } = validateDataSchema;
     const dataToUpdate: Partial<TUserUpdated> = { ...restOfData };
 
     if (newPassword && currentPassword) {
@@ -156,8 +157,9 @@ export class UserService {
 
     const deletedUser = await this.userModel.deleteUser(idUser);
 
+    const { password, ...userWithoutPassword } = deletedUser;
     return {
-      user: deletedUser,
+      user: userWithoutPassword,
     };
   }
 }

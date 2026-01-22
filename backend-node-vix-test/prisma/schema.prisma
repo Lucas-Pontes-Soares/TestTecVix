@@ -53,6 +53,7 @@ model brandMaster {
 model vM {
   idVM          Int          @id @default(autoincrement())
   vmName        String?
+  password      String?
   vCPU          Int
   ram           Int
   disk          Int
@@ -64,7 +65,7 @@ model vM {
   deletedAt     DateTime?    @db.DateTime(0)
   os            String?
   brandMaster   brandMaster? @relation(fields: [idBrandMaster], references: [idBrandMaster])
-
+  location      ETaskLocation @default(CLOUD_BR)
   @@index([idBrandMaster], map: "vM_idBrandMaster_fkey")
 }
 
@@ -81,7 +82,6 @@ model user {
   createdAt     DateTime? @default(now()) @db.DateTime(0)
   updatedAt     DateTime? @default(now()) @db.DateTime(0)
   deletedAt     DateTime? @db.DateTime(0)
-
   brandMaster brandMaster? @relation(fields: [idBrandMaster], references: [idBrandMaster])
 
   @@index([idBrandMaster], map: "user_idBrandMaster_fkey")
@@ -97,4 +97,11 @@ enum ERole {
   admin
   manager
   member
+}
+
+enum ETaskLocation {
+  LOCAL
+  REMOTE
+  CLOUD_BR
+  CLOUD_US
 }

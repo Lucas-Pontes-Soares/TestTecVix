@@ -18,5 +18,6 @@ export const ERROR_MESSAGE = {
   EMAIL_ALREADY_EXISTS: "Email already exists",
   CURRENT_PASSWORD_INCORRECT: "Current password is incorrect",
   PASSWORDS_MUST_BE_PROVIDED: "Current and new password must be provided",
+  VM_HAS_NO_PASSWORD: "This VM does not have a password set",
   TOKEN_EXPIRED: "Your authentication has expired"
 };

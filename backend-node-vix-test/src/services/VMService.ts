@@ -6,6 +6,7 @@ import { ERROR_MESSAGE } from "../constants/erroMessages";
 import { STATUS_CODE } from "../constants/statusCode";
 import { TVMUpdate, vMUpdatedSchema } from "../types/validations/VM/updateVM";
 import { vmListAllSchema } from "../types/validations/VM/vmListAll";
+import bcrypt from "bcryptjs";
 
 export class VMService {
   constructor() {}
@@ -13,45 +14,99 @@ export class VMService {
   private vMModel = new VMModel();
 
   async getById(idVM: number) {
-    return this.vMModel.getById(idVM);
+    const vm = await this.vMModel.getById(idVM);
+    if (!vm) return null;
+    const { password, ...vmWithoutPassword } = vm;
+    return vmWithoutPassword;
   }
 
   async listAll(query: unknown, user: user) {
     const validQuery = vmListAllSchema.parse(query);
-    return this.vMModel.listAll({
+    const { totalCount, result: vms } = await this.vMModel.listAll({
       query: validQuery,
     });
-  }
 
-  async createNewVM(data: unknown, user: user) {
-    const validateData = vMCreatedSchema.parse(data);
-
-    const createdVM = await this.vMModel.createNewVM({
-      ...validateData,
-      status: "RUNNING",
+    const vmsWithoutPasswords = vms.map((vm) => {
+      const { password, ...vmWithoutPassword } = vm;
+      return vmWithoutPassword;
     });
 
-    return createdVM;
+    return { totalCount, result: vmsWithoutPasswords };
   }
 
-  async updateVM(idVM: number, data: unknown, user: user) {
+  async createNewVM(data: TVMCreate, user: user) {
+    const validData = vMCreatedSchema.parse(data);
+
+    let hashedPassword = undefined;
+    if (validData.password) {
+      const saltRounds = 10;
+      hashedPassword = bcrypt.hashSync(validData.password, saltRounds);
+    }
+
+    const createdVM = await this.vMModel.createNewVM({
+      ...validData,
+      status: "RUNNING",
+      password: hashedPassword,
+    });
+
+    const { password, ...vmWithoutPassword } = createdVM;
+    return vmWithoutPassword;
+  }
+
+  async updateVM(idVM: number, data: TVMUpdate, user: user) {
     const validateDataSchema = vMUpdatedSchema.parse(data);
-    const oldVM = await this.getById(idVM);
+    const oldVM = await this.vMModel.getById(idVM);
 
     if (!oldVM) {
       throw new AppError(ERROR_MESSAGE.NOT_FOUND, STATUS_CODE.NOT_FOUND);
     }
 
-    const updatedVM = await this.vMModel.updateVM(idVM, validateDataSchema);
-    return updatedVM;
+    const { currentPassword, newPassword, ...restOfData } = validateDataSchema;
+    const dataToUpdate: Partial<TVMUpdate> = { ...restOfData };
+
+    if (newPassword && currentPassword) {
+      if (!oldVM.password) {
+        throw new AppError(
+          ERROR_MESSAGE.VM_HAS_NO_PASSWORD,
+          STATUS_CODE.BAD_REQUEST,
+        );
+      }
+
+      const isPasswordCorrect = bcrypt.compareSync(
+        currentPassword,
+        oldVM.password,
+      );
+
+      if (!isPasswordCorrect) {
+        throw new AppError(
+          ERROR_MESSAGE.CURRENT_PASSWORD_INCORRECT,
+          STATUS_CODE.UNAUTHORIZED,
+        );
+      }
+
+      const saltRounds = 10;
+      dataToUpdate.password = bcrypt.hashSync(newPassword, saltRounds);
+    } else if (newPassword || currentPassword) {
+      throw new AppError(
+        ERROR_MESSAGE.PASSWORDS_MUST_BE_PROVIDED,
+        STATUS_CODE.BAD_REQUEST,
+      );
+    }
+
+    const updatedVM = await this.vMModel.updateVM(idVM, dataToUpdate);
+
+    const { password, ...vmWithoutPassword } = updatedVM;
+    return vmWithoutPassword;
   }
 
   async deleteVM(idVM: number, user: user) {
-    const oldVM = await this.getById(idVM);
+    const oldVM = await this.vMModel.getById(idVM);
     if (!oldVM) {
       throw new AppError(ERROR_MESSAGE.NOT_FOUND, STATUS_CODE.NOT_FOUND);
     }
     const deletedVm = await this.vMModel.deleteVM(idVM);
-    return deletedVm;
+
+    const { password, ...vmWithoutPassword } = deletedVm;
+    return vmWithoutPassword;
   }
 }

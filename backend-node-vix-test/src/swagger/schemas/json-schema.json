@@ -208,6 +208,12 @@
             "null"
           ]
         },
+        "password": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
         "vCPU": {
           "type": "integer"
         },
@@ -270,6 +276,16 @@
             {
               "type": "null"
             }
+          ]
+        },
+        "location": {
+          "type": "string",
+          "default": "CLOUD_BR",
+          "enum": [
+            "LOCAL",
+            "REMOTE",
+            "CLOUD_BR",
+            "CLOUD_US"
           ]
         }
       }
