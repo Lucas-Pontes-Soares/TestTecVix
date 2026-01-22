@@ -1,6 +1,7 @@
 import { prisma } from "../database/client";
 import { TUserCreated } from "../types/validations/User/createUser";
 import { TQuery } from "../types/validations/Queries/queryListAll";
+import { TUserUpdated } from "../types/validations/User/updateUser";
 
 export class UserModel {
   async getSelf(email: string) {
@@ -13,6 +14,7 @@ export class UserModel {
         idUser: true,
         username: true,
         email: true,
+        password: true,
         profileImgUrl: true,
         role: true,
         idBrandMaster: true,
@@ -63,7 +65,7 @@ export class UserModel {
     return prisma.user.create({ data });
   }
 
-  async updateUser(idUser: string, data: TUserCreated) {
+  async updateUser(idUser: string, data: TUserUpdated) {
     return prisma.user.update({
       where: { idUser },
       data: { ...data, updatedAt: new Date() },

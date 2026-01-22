@@ -16,4 +16,7 @@ export const ERROR_MESSAGE = {
   INVALID_DATA: "Invalid data",
   USERNAME_ALREADY_EXISTS: "Username already exists",
   EMAIL_ALREADY_EXISTS: "Email already exists",
+  CURRENT_PASSWORD_INCORRECT: "Current password is incorrect",
+  PASSWORDS_MUST_BE_PROVIDED: "Current and new password must be provided",
+  TOKEN_EXPIRED: "Your authentication has expired"
 };
