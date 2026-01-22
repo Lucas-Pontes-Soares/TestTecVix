@@ -27,4 +27,16 @@ Com o objetivo em especializar em **Back-end**, busco posição profissional foc
 
 ## 💡 Principais Modificações
 
+- ➕ CRUD dos usuários;
+- ⚒️ Fiz Diagrama do banco de dados Diagrama de Entidade-Relacionamento (DER). Está localizado em backend > prisma > dbdiagram
+- 🔒 Criptografia de senhas utilizando a biblioteca: bcryptjs;
+- 🪪 Implementação de tokens JWT que expiram em 1 dia;
+- 👤 Ao registrar conta de usuário, automaticamente já é logado e retornado o tokenJWT;
+- ⏺️ Botão na tela de login para redirecionar para a tela de registro;
+- 💻 Tela de login e registrar estavam com o componente Contato de forma diferente, ajustado;
+- 📦 Dados do usuário, e token, sendo salvos no localStorage;
+
 ## 📖 Soluções
+
+- 👤 Para criar a conta e ao mesmo tempo já logar, criei uma rota especifica na api "/user/register" que chama a função para criar um usuário, se tudo certo, ele chama a função de logar. Retornando o usuario e o token. Economizando cliques e tempo do usuário;
+- ⚒️ Para construir o Diagrama de Entidade-Relacionamento (DER), utilizei o app Draw.io, resolvi fazer isso para ter melhor entendimento de como funciona o banco de dados, e os relacionamentos, uma boa prática;
