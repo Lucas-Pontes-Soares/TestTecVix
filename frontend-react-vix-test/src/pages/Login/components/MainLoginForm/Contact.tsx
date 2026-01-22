@@ -32,7 +32,7 @@ export const Contact = ({
       <Link to={brandSite || "#"} target="_blank">
         <TextRob14FontXsB
           sx={{
-            color: textColor || theme[mode].black,
+            color: textColor || theme[mode].btnDarkBlue,
             display: "flex",
             gap: "4px",
             alignItems: "center",
@@ -61,13 +61,13 @@ export const Contact = ({
           width: "8px",
           height: "4px",
           borderRadius: "4px",
-          backgroundColor: SeparatorColor || theme[mode].grayLight,
+          backgroundColor: SeparatorColor || theme[mode].blue,
         }}
       />
       <Link to={brandPrivacyPolicy || "#"} target="_blank">
         <TextRob14FontXsB
           sx={{
-            color: textColor || theme[mode].black,
+            color: textColor || theme[mode].btnDarkBlue,
           }}
         >
           {t("loginRegister.privacyAndPolicy")}

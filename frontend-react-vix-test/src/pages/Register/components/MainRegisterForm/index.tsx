@@ -12,6 +12,8 @@ import { TextRob18Font2M } from "../../../../components/Text2M";
 import { Link } from "react-router-dom";
 import { useRegister } from "../../../../hooks/useRegister";
 import { useZBrandInfo } from "../../../../stores/useZBrandStore";
+import { NewOnVituaX } from "../../../Login/components/MainLoginForm/NewOnVituaX";
+import { InstallButton } from "../../../Login/components/MainLoginForm/InstallButton"; 
 
 export const MainRegisterForm = () => {
   const { mode, theme } = useZTheme();
@@ -96,10 +98,14 @@ export const MainRegisterForm = () => {
             color: theme[mode].blue,
           }}
         >
-          {t("loginRegister.login")}
+          {t("loginRegister.loginPage")}
         </TextRob18Font2M>
       </Link>
+      {/* New on Brand (unless vituax)? */}
+      {Boolean(idBrand) && <NewOnVituaX />}
       {/* Brand - Contact - Terms and policy */}
+      {/* Install button */}
+      <InstallButton />
       {idBrand === null && <Contact />}
     </Stack>
   );

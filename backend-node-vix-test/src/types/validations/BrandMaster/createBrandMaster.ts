@@ -2,7 +2,7 @@ import { z } from "zod";
 
 export const brandMasterSchema = z.object({
   brandName: z.string().nullable().optional(),
-  isActive: z.boolean().default(false).optional(),
+  isActive: z.boolean().default(true).optional(),
   brandLogo: z.string().nullable().optional(),
   domain: z.string().nullable().optional(),
   contract: z.string().nullable().optional(),

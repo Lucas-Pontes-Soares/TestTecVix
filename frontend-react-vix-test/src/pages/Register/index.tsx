@@ -8,6 +8,7 @@ export const RegisterPage = () => {
       sx={{
         overflowY: "auto",
         alignItems: "center",
+        justifyContent: "center",
       }}
     >
       {/* Register box */}

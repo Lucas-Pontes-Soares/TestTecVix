@@ -16,6 +16,8 @@ import { ModalUserNotActive } from "./ModalUserNotActive";
 import { LogoBrand } from "../../../../components/LogoBrand";
 import { useZBrandInfo } from "../../../../stores/useZBrandStore";
 import { InstallButton } from "./InstallButton";
+import { Link } from "react-router-dom";
+import { TextRob18Font2M } from "../../../../components/Text2M";
 
 export const MainLoginForm = () => {
   const { mode, theme } = useZTheme();
@@ -115,6 +117,16 @@ export const MainLoginForm = () => {
             </TextRob20Font1MC>
           )}
         </Button>
+        {/* Go to register page */}
+        <Link to="/register" className="py-3">
+          <TextRob18Font2M
+            sx={{
+              color: theme[mode].blue,
+            }}
+          >
+            {t("loginRegister.registerPage")}
+          </TextRob18Font2M>
+        </Link>
         {/* New on Brand (unless vituax)? */}
         {Boolean(idBrand) && <NewOnVituaX />}
         {/* Brand - Contact - Terms and policy */}
