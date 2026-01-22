@@ -49,7 +49,7 @@ userRoutes.get(
 
 userRoutes.get(
   `${BASE_PATH}`,
-   authUser,
+  authUser,
   async (req, res) => {
     await userController.listAll(req, res);
   },
