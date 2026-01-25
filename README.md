@@ -36,8 +36,16 @@ Com o objetivo em especializar em **Back-end**, busco posição profissional foc
 - 💻 Tela de login e registrar estavam com o componente Contato de forma diferente, ajustado;
 - 📦 Dados do usuário, e token, sendo salvos no localStorage;
 - ➕ Campos de senha (criptografado) e localização adicionados na VM;
+- 🧬 Requisições testadas no insomnia. Está localizado em backend > insomnia > Insomnia.
 
 ## 📖 Soluções
 
 - 👤 Para criar a conta e ao mesmo tempo já logar, criei uma rota especifica na api "/user/register" que chama a função para criar um usuário, se tudo certo, ele chama a função de logar. Retornando o usuario e o token. Economizando cliques e tempo do usuário;
 - ⚒️ Para construir o Diagrama de Entidade-Relacionamento (DER), utilizei o app Draw.io, resolvi fazer isso para ter melhor entendimento de como funciona o banco de dados, e os relacionamentos e tipos, uma boa prática;
+- 📷 Abaixo a imagem das requisições do Insomnia e o diagrama DER do banco de dados.
+
+**Requisições do Insomnia:**
+![Requisições do Insomnia](./images/insomnia.png)
+
+**Diagrama DER do banco de dados:**
+![Diagrama DER do banco de dados](./images/TestVituaxDatabaseDiagram.drawio.png)

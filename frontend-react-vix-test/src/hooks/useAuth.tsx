@@ -24,6 +24,7 @@ export const useAuth = () => {
   };
 
   const getAuth = async (force = false) => {
+    /*
     if (
       !force &&
       token &&
@@ -36,8 +37,8 @@ export const useAuth = () => {
     setLoginTime(new Date());
 
     const newToken = await fetchNewUserToken();
-    setUser({ token: newToken });
-    return { Authorization: `Bearer ${newToken || token}` };
+    setUser({ token: newToken }); */
+    return { Authorization: `Bearer ${token}` };
   };
 
   return {
