@@ -6,8 +6,8 @@ export const userCreatedSchema = z.object({
   email: z.string().email("Invalid email"),
   profileImgUrl: z.string().nullable().optional(),
   role: z.enum(["admin", "member", "manager"]).optional(),
-  idBrandMaster: z.number().optional(),
-  isActive: z.boolean().optional().default(false),
+  idBrandMaster: z.number().nullable().optional(),
+  isActive: z.boolean().optional().default(true),
 });
 
 export type TUserCreated = z.infer<typeof userCreatedSchema>;

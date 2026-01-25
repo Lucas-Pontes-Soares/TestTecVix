@@ -39,6 +39,7 @@ Table brandMaster {
 Table vM {
   idVM Int [pk, increment]
   vmName String
+  password String
   vCPU Int [not null]
   ram Int [not null]
   disk Int [not null]
@@ -50,6 +51,7 @@ Table vM {
   deletedAt DateTime
   os String
   brandMaster brandMaster
+  location ETaskLocation [not null, default: 'CLOUD_BR']
 }
 
 Table user {
@@ -78,6 +80,13 @@ Enum ERole {
   admin
   manager
   member
+}
+
+Enum ETaskLocation {
+  LOCAL
+  REMOTE
+  CLOUD_BR
+  CLOUD_US
 }
 
 Ref: vM.idBrandMaster > brandMaster.idBrandMaster

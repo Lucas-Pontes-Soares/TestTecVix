@@ -14,10 +14,10 @@ export const Contact = () => {
       sx={{
         width: "100%",
         flexDirection: "row",
-        justifyContent: "flex-start",
+        justifyContent: "center",
         alignItems: "center",
         gap: "8px",
-        marginTop: "auto",
+        marginTop: "24px",
       }}
     >
       <Link to={brandSite || "#"} target="_blank">

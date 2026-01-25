@@ -1,0 +1,386 @@
+type: collection.insomnia.rest/5.0
+schema_version: "5.1"
+name: TestTecVix Lucas Soares
+meta:
+  id: wrk_ad5f7c34bab44511b643ef2963f79101
+  created: 1769014015084
+  modified: 1769376838487
+  description: ""
+collection:
+  - url: http://localhost:3001/api/v1
+    name: base
+    meta:
+      id: req_0471686c1a07407da1bbdd01a39d0fc3
+      created: 1769014015089
+      modified: 1769014070199
+      isPrivate: false
+      description: ""
+      sortKey: -1769014015089
+    method: GET
+    headers:
+      - name: User-Agent
+        value: insomnia/12.3.0
+        description: ""
+        disabled: false
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: http://localhost:3001/api/v1/health
+    name: health
+    meta:
+      id: req_81451749b4af46d79fb96b366b54b1bf
+      created: 1769014044074
+      modified: 1769014128814
+      isPrivate: false
+      description: ""
+      sortKey: -1769014044074
+    method: GET
+    headers:
+      - name: User-Agent
+        value: insomnia/12.3.0
+        description: ""
+        disabled: false
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: http://localhost:3001/api/v1/user
+    name: getAllUsers
+    meta:
+      id: req_3d98175eb6e44dd793067325ed62fac1
+      created: 1769016211704
+      modified: 1769019534220
+      isPrivate: false
+      description: ""
+      sortKey: -1769016211704
+    method: GET
+    headers:
+      - name: User-Agent
+        value: insomnia/12.3.0
+        description: ""
+        disabled: false
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: http://localhost:3001/api/v1/user
+    name: createUser
+    meta:
+      id: req_deb9729d42d344c3bfadc4a443fffda1
+      created: 1769019536242
+      modified: 1769106820581
+      isPrivate: false
+      description: ""
+      sortKey: -1769019536242
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+          "username": "lucasps_admin",
+          "password": "senha123",
+          "email": "lucasps.dev@1outlook.com",
+          "role": "admin",
+          "profileImgUrl": "https://github.com/lucas-pontes-soares.png"
+        }
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/12.3.0
+        description: ""
+        disabled: false
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: http://localhost:3001/api/v1/user/694b57c8-ff17-4319-9bb3-9a419124743e
+    name: getUserById
+    meta:
+      id: req_c140a4463e434f4080f728b6f0633165
+      created: 1769019717053
+      modified: 1769092898734
+      isPrivate: false
+      description: ""
+      sortKey: -1769019717053
+    method: GET
+    headers:
+      - name: User-Agent
+        value: insomnia/12.3.0
+        description: ""
+        disabled: false
+      - name: Authorization
+        value: Barear
+          eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZFVzZXIiOiI2OTRiNTdjOC1mZjE3LTQzMTktOWJiMy05YTQxOTEyNDc0M2UiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3NjkwOTI2MzAsImV4cCI6MTc2OTE3OTAzMH0.2l9lWwuWsXBlaI58nGxHDT-ihs6bqRLyCNt_D5g91nw
+        description: ""
+        disabled: false
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: http://localhost:3001/api/v1/user/694b57c8-ff17-4319-9bb3-9a419124743e
+    name: updateUser
+    meta:
+      id: req_987ab46b0b444faeafc397bc4136f94c
+      created: 1769019737041
+      modified: 1769025198136
+      isPrivate: false
+      description: ""
+      sortKey: -1769019737041
+    method: PUT
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"username": "lucasps"
+        }
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/12.3.0
+        description: ""
+        disabled: false
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: http://localhost:3001/api/v1/user/c78abdaf-8ac4-406a-8835-a3ca3bcf1431
+    name: deleteUser
+    meta:
+      id: req_c740bc48fce546e5926629f795ee7650
+      created: 1769019830785
+      modified: 1769023663363
+      isPrivate: false
+      description: ""
+      sortKey: -1769019830785
+    method: DELETE
+    headers:
+      - name: User-Agent
+        value: insomnia/12.3.0
+        description: ""
+        disabled: false
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: http://localhost:3001/api/v1/user
+    name: getUserByEmail
+    meta:
+      id: req_70aa622998634c588fb33c2c589834bb
+      created: 1769022681397
+      modified: 1769022764271
+      isPrivate: false
+      description: ""
+      sortKey: -1769019727047
+    method: GET
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"email": "lucasps.dev@outlook.com"
+        }
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/12.3.0
+        description: ""
+        disabled: false
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: http://localhost:3001/api/v1/user/login
+    name: loginUser
+    meta:
+      id: req_b6afe6e25f364fc980a8079e6866e6bf
+      created: 1769024335700
+      modified: 1769175148662
+      isPrivate: false
+      description: ""
+      sortKey: -1769024335700
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"email": "lucas@gmail.com",
+        	"password": "senha123"
+        }
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/12.3.0
+        description: ""
+        disabled: false
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: http://localhost:3001/api/v1/user/register
+    name: createUser
+    meta:
+      id: req_318b2b1f6c124ed088a997ba8cb1d470
+      created: 1769024397896
+      modified: 1769024421193
+      isPrivate: false
+      description: ""
+      sortKey: -1769024397896
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+          "username": "lucasps_admin",
+          "password": "senha123",
+          "email": "lucasps.dev@outlook.com",
+          "role": "admin",
+          "profileImgUrl": "https://github.com/lucas-pontes-soares.png"
+        }
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/12.3.0
+        description: ""
+        disabled: false
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: http://localhost:3001/api/v1/vm
+    name: createVM
+    meta:
+      id: req_7ff60868dc2745639d973047a3bcb5b4
+      created: 1769111145779
+      modified: 1769112225675
+      isPrivate: false
+      description: ""
+      sortKey: -1769111145779
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"vmName": "Company Test2",
+        	"vCPU": 2,
+        	"password": "senha123",
+        	"ram": 4,
+        	"disk": 154,
+        	"hasBackup": false,
+        	"idBrandMaster": 1,
+        	"os": "ubuntu2024"
+        	
+        }
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/12.3.0
+        description: ""
+        disabled: false
+      - name: Authorization
+        value: Barear
+          eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZFVzZXIiOiI2OTRiNTdjOC1mZjE3LTQzMTktOWJiMy05YTQxOTEyNDc0M2UiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3NjkwOTI2MzAsImV4cCI6MTc2OTE3OTAzMH0.2l9lWwuWsXBlaI58nGxHDT-ihs6bqRLyCNt_D5g91nw
+        description: ""
+        disabled: false
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: http://localhost:3001/api/v1/vm/2
+    name: updateVM
+    meta:
+      id: req_902ca69e50134f758ed921a228793ef9
+      created: 1769112227912
+      modified: 1769376419537
+      isPrivate: false
+      description: ""
+      sortKey: -1769112227912
+    method: PUT
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"status": "STOPPED"
+        }
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/12.3.0
+        description: ""
+        disabled: false
+      - name: Authorization
+        value: Barear
+          eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZFVzZXIiOiJiZGEzMDliNC0zNGVjLTQ3NjgtODFmYi0wNTE1YjYzNTUyOTAiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3NjkxNzUxOTcsImV4cCI6MTc2OTI2MTU5N30.Acxx1KNlk731kYvlT-hFUpDuAr9kchMfYcRo9LV59LM
+        description: ""
+        disabled: false
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+cookieJar:
+  name: Default Jar
+  meta:
+    id: jar_1e5b462b171eb1b19c2ba6bc89ba24229f3ccc2c
+    created: 1769014015086
+    modified: 1769014015086
+environments:
+  name: Base Environment
+  meta:
+    id: env_1e5b462b171eb1b19c2ba6bc89ba24229f3ccc2c
+    created: 1769014015085
+    modified: 1769014015085
+    isPrivate: false
